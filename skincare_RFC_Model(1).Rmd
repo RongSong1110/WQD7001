@@ -1,0 +1,254 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(RColorBrewer)
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+install.packages("treemapify")
+install.packages('fastDummies')
+library(fastDummies)
+library(treemapify)
+
+```
+
+```{r}
+
+data = read.csv("C:/Users/mac/Desktop/WQD7001/group/Skincare Survey In Malaysia 2021.csv")
+
+vis_cols = c("Gender.","Age.","Race.","Occupation.","Which..if.any..of.the.following.statements.applies.to.you.",
+             "Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product.",
+             "How.do.did.you.choose.your.products.",
+             "On.average..how.much.do.you.spend.on.skincare.products.each.month.",
+             "I.experienced.allergies.after.use.a.new.skincare.products...Eg...Rashness..acne..purging.etc.",
+             "Do.share.your.skincare.goals.and.motivation.with.us.")
+
+length(vis_cols)
+```
+
+
+```{r}
+dataID = data.frame(unique(data$Timestamp))
+dataID$RecID = seq.int(nrow(dataID)) 
+dataID$RecID = paste("RcdID",dataID$RecID,sep="_", collapse=NULL)
+colnames(dataID) = c("Timestamp","RecID")
+FinalData = left_join(data, dataID, by ='Timestamp')
+
+```
+
+## Visulizaiton of Gender.
+```{r}
+Count_Gender = FinalData %>% group_by(Gender.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_Gender, aes(x = Gender.,y = count)) + geom_bar(stat = 'identity')
+```
+
+## Visulizaiton of Age.
+
+```{r}
+Count_Age. = FinalData %>% group_by(Age.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_Age., aes(x = Age.,y = count)) + geom_bar(stat = 'identity')
+```
+
+
+## Visulizaiton of Race.
+```{r}
+
+Count_Race. = FinalData %>% group_by(Race.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_Race., aes(x = Race.,y = count)) + geom_bar(stat = 'identity')+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+## Visulizaiton of Occupation.
+
+```{r}
+Count_Occupation. = FinalData %>% group_by(Occupation.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_Occupation., aes(x = Occupation.,y = count)) + geom_bar(stat = 'identity')
+```
+
+## Visulizaiton of Which..if.any..of.the.following.statements.applies.to.you.
+```{r}
+Count_Which..if.any..of.the.following.statements.applies.to.you. = FinalData %>% group_by(Which..if.any..of.the.following.statements.applies.to.you.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_Which..if.any..of.the.following.statements.applies.to.you., aes(x = Which..if.any..of.the.following.statements.applies.to.you.,y = count)) + geom_bar(stat = 'identity')+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+
+## Visulizaiton of Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product.
+```{r}
+Count_Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product. = FinalData %>% group_by(Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product., aes(x = Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product.,y = count)) + geom_bar(stat = 'identity')+theme(axis.text.x = element_text(angle = 30, hjust = 1))
+
+```
+
+
+## The visulization of How.do.did.you.choose.your.products.
+```{r}
+
+Count_How.do.did.you.choose.your.products. = FinalData %>% group_by(How.do.did.you.choose.your.products.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_How.do.did.you.choose.your.products., aes(x = How.do.did.you.choose.your.products.,y = count)) + geom_bar(stat = 'identity')+theme(axis.text.x = element_text(angle = 30, hjust = 1))
+
+```
+
+
+
+## The visulization of On.average..how.much.do.you.spend.on.skincare.products.each.month.
+```{r}
+Count_On.average..how.much.do.you.spend.on.skincare.products.each.month. = FinalData %>% group_by(On.average..how.much.do.you.spend.on.skincare.products.each.month.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_On.average..how.much.do.you.spend.on.skincare.products.each.month., aes(x = On.average..how.much.do.you.spend.on.skincare.products.each.month.,y = count)) + geom_bar(stat = 'identity')+theme(axis.text.x = element_text(angle = 30, hjust = 1))
+```
+
+
+
+## The visulization of I.experienced.allergies.after.use.a.new.skincare.products...Eg...Rashness..acne..purging.etc.
+```{r}
+Count_I.experienced.allergies.after.use.a.new.skincare.products...Eg...Rashness..acne..purging.etc. = FinalData %>% group_by(I.experienced.allergies.after.use.a.new.skincare.products...Eg...Rashness..acne..purging.etc.)%>%summarise(count = n_distinct(RecID))
+ggplot(data = Count_I.experienced.allergies.after.use.a.new.skincare.products...Eg...Rashness..acne..purging.etc., aes(x = I.experienced.allergies.after.use.a.new.skincare.products...Eg...Rashness..acne..purging.etc.,y = count)) + geom_bar(stat = 'identity')+theme(axis.text.x = element_text(angle = 0, hjust = 1))
+```
+
+
+## The visulization of Do.share.your.skincare.goals.and.motivation.with.us.
+
+```{r}
+Count_Do.share.your.skincare.goals.and.motivation.with.us. = FinalData %>% group_by(Do.share.your.skincare.goals.and.motivation.with.us.)%>%summarise(count = n_distinct(RecID))
+
+ggplot(data = Count_Do.share.your.skincare.goals.and.motivation.with.us., aes(area = count,label = Do.share.your.skincare.goals.and.motivation.with.us.))+
+ geom_treemap(fill="steelblue") +
+ geom_treemap_text(fontface = "italic", colour = "red", place = "centre",grow = TRUE,alpha=.6)+
+ scale_fill_distiller(palette="Greens")
+```
+
+
+
+
+
+
+
+
+
+
+
+## Random Forest Model Building
+```{r}
+
+FinalData = FinalData[complete.cases(FinalData), ]
+FinalData = FinalData %>% filter(Age. != "")
+Model_data <- subset (FinalData, select = -c (Timestamp,Do.share.your.skincare.goals.and.motivation.with.us.,RecID)) 
+
+
+
+categorical_col_updated = c("Gender.","Age.","Race.","Occupation.","Have.you.ever.used.any.skin.care.products.","Which..if.any..of.the.following.statements.applies.to.you.","Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product.","How.do.did.you.choose.your.products.","Do.you.use.samples.before.buying.skincare.products.","How.often.do.you.buy.skincare.products.","Where.do.you.purchase.your.skin.care.products.","Do.you.think.that.technology.can.improve.your.skincare.routine.","Do.you.have.heard.about.AI..Artificial.Intelligent..","After.you.know.about.AI..do.you.want.to.have.a.skin.scanning.app.that.can.customize.skincare.regime.")
+
+Model_dataf <- dummy_cols(Model_data, select_columns = categorical_col_updated)
+```
+
+
+```{r}
+
+Model_dataf <- subset (Model_dataf, select = -c(Gender.,Age.,Race.,Occupation.,Have.you.ever.used.any.skin.care.products.,Which..if.any..of.the.following.statements.applies.to.you.,Which.of.the.following.types.of.ingredients.would.make.you.more.likely.to.buy.a.skin.care.product.,How.do.did.you.choose.your.products.,Do.you.use.samples.before.buying.skincare.products.,How.often.do.you.buy.skincare.products.,Where.do.you.purchase.your.skin.care.products.,Do.you.think.that.technology.can.improve.your.skincare.routine.,Do.you.have.heard.about.AI..Artificial.Intelligent..,After.you.know.about.AI..do.you.want.to.have.a.skin.scanning.app.that.can.customize.skincare.regime.))
+
+```
+
+
+```{r}
+library(dplyr)
+
+Model_dataf <- Model_dataf %>% 
+  mutate(On.average..how.much.do.you.spend.on.skincare.products.each.month. = case_when(On.average..how.much.do.you.spend.on.skincare.products.each.month. == "Less than RM 20"   ~ 1,
+                           On.average..how.much.do.you.spend.on.skincare.products.each.month. == "RM 20 - RM 50"   ~ 2,
+                           On.average..how.much.do.you.spend.on.skincare.products.each.month. == "RM 50 - RM 100" ~ 3, 
+                           On.average..how.much.do.you.spend.on.skincare.products.each.month. == "RM 100 - RM 150" ~ 4,
+                           On.average..how.much.do.you.spend.on.skincare.products.each.month. == "> RM 150" ~ 5
+                           ))
+```
+
+
+```{r}
+Model_dataf_X = subset (Model_dataf, select = -c(On.average..how.much.do.you.spend.on.skincare.products.each.month.))
+colnames(Model_dataf_X) <- paste("Col",seq(1, length(colnames(Model_dataf_X))),sep="_", collapse=NULL)
+Model_dataf_Y = data.frame(Model_dataf[,"On.average..how.much.do.you.spend.on.skincare.products.each.month."])
+colnames(Model_dataf_Y) <- "Label"
+Model_dataf = cbind(Model_dataf_X,Model_dataf_Y)
+Model_dataf$Label = as.factor(Model_dataf$Label)
+
+```
+
+
+
+```{r}
+library(caret)
+set.seed(101)
+split_val = createDataPartition(Model_dataf$Label, p = 0.80, list = FALSE) 
+train_data = Model_dataf[split_val,]
+test_data = Model_dataf[-split_val,]
+```
+
+
+```{r}
+###MODELLING OF DATA USING MACHINE LEARNING ALGORITHMS####
+#Defining error metrics to check the error rate and accuracy of the Regression ML algorithms
+ 
+#1. MEAN ABSOLUTE PERCENTAGE ERROR (MAPE)
+MAPE = function(y_actual,y_predict){
+  mean(abs((y_actual-y_predict)/y_actual))*100
+}
+ 
+#2. R SQUARE error metric -- Coefficient of Determination
+RSQUARE = function(y_actual,y_predict){
+  cor(y_actual,y_predict)^2
+}
+```
+
+
+```{r}
+##MODEL 3: RANDOM FOREST
+library(randomForest)
+set.seed(123)
+
+
+
+RF_model = randomForest(Label~., train_data, ntree = 300, importance = TRUE,proximity=TRUE)
+RF_predict=predict(RF_model,subset(test_data, select = -c(Label)))
+
+
+RF_model
+
+
+
+```
+
+
+
+```{r}
+obs_p_ran = data.frame(prob=RF_predict,obs=test_data$Label)
+obs_p_ran
+```
+
+
+
+```{r}
+table(test_data$Label,RF_predict,dnn=c("True","predict"))
+```
+
+
+```{r}
+#install.packages("pROC")
+library(pROC)
+ran_roc <- roc(test_data$Label,as.numeric(RF_predict))
+plot(ran_roc, print.auc=TRUE, auc.polygon=TRUE, grid=c(0.1, 0.2),grid.col=c("green", "red"), max.auc.polygon=TRUE,auc.polygon.col="skyblue", print.thres=TRUE,main='ROC curve,mtry=3,ntree=500')
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
