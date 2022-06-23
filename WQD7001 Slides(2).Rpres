@@ -1,0 +1,193 @@
+Skincare Survey Analysis
+========================================================
+<style>
+/* Your other css */
+  .section .reveal .state-background {
+    background-image: url(https://plugins-media.makeupar.com/smb/blog/post/2021-04-16/0dc72d32-8c99-4411-8529-2b91e8901f54.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    background-size: 100% 100%;
+}
+</style>
+
+
+## WQD7001 Principle of Data Science: Group Project
+<div class="box">
+<div class="group"><br>
+<br><br>
+
+Group Member:<br>
+Alfian&nbsp; Rosi&nbsp; Saputra(S2148301)<br>
+Mingli&nbsp; Zhu (S2147909)<br>
+Rong&nbsp; Song (S2117541)<br>
+Jing &nbsp;Su (S2141911)<br>
+Mingzhuo&nbsp; Li (S2150565)
+</div></div>
+
+
+Background
+========================================================
+
+<style>
+
+/* slide titles */
+selection.reveal h3 { 
+  font-size: 50px;
+  color: blue;
+}
+
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h3 {
+   font-size: 40px;
+   font-weight: bold;
+   color: green;
+}
+
+/* ordered and unordered list styles */
+.reveal ul, 
+.reveal ol {
+    font-size: 40px;
+    color: black;
+    list-style-type: square;
+}
+
+</style>
+
+## Introduction:
+
+Skincare products have gained popularity to help alleviate skin problems recently, such as skin problems namely acne, sunburn, and pimple brought by the humid weather. However, many people have difficulty choosing the appropriate skincare products for their skin type. The purpose of this project is to conduct an analysis based on a survey in terms of several factors such as skin condition, product selection and skincare goals, and build a model to predict the purchasing capability on skincare products in the future.
+
+## Beneficiary of the product:
+
+Young segment (teenagers) or adult woman but not limited to male as well.
+
+
+========================================================
+<style>
+
+/* slide titles */
+.reveal h3 { 
+  font-size: 100px;
+  color: black;
+}
+
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h2 {
+   font-size: 40px;
+   font-weight: bold;
+   color: green;
+}
+
+/* ordered and unordered list styles */
+.reveal ul, 
+.reveal ol {
+    font-size: 40px;
+    color: black;
+    list-style-type: square;
+}
+
+</style>
+
+## Questions:
+
+1. What skin problems are most common in the Malaysian population?
+2. What factors do people pay more attention to when buying skincare products?
+3. How to judge how much to spend on skincare products on average each month?
+
+</style>
+
+## Obejectives:
+
+1. to conduct exploratory data analysis and interpret the result.
+2. to conduct exploratory data analysis and interpret the result.
+3. to build a prediction model to predict the purchasing capability and evaluate the performance.
+
+Dataset and Process
+========================================================
+
+<style>
+
+/* slide titles */
+.reveal h3 { 
+  font-size: 80px;
+  color: blue;
+}
+
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h2 {
+   font-size: 40px;
+   font-weight: bold;
+   color: green;
+}
+
+/* ordered and unordered list styles */
+.reveal ul, 
+.reveal ol {
+    font-size: 40px;
+    color: black;
+    list-style-type: square;
+}
+
+</style>
+
+## Source and description of dataset:
+
+<li>Obtained from Kaggle in this <a href="https://www.kaggle.com/datasets/nurunnz/skincare-survey-among-malaysian-2021?resource=download" target="_blank">link</a></li>
+
+<li>The original dataset consists of 32 columns, while we selected 10 variables to analyze in this project.
+
+## Data science process:
+<img src="www/process.png"></img>
+
+Overview of the web app
+========================================================
+<style>
+/* slide titles */
+.reveal h3 { 
+  font-size: 80px;
+  color: black;
+}
+
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h2 {
+   font-size: 35px;
+   font-weight: bold;
+   color: black;
+}
+
+/* ordered and unordered list styles */
+.reveal ul, 
+.reveal ol {
+    font-size: 35px;
+    color: black;
+    list-style-type: square;
+}
+
+</style>
+<li>This web application consists of 5 parts, including the introduction tab, my profile tab, objective features tab, test result tab, and source code tab.
+<li>This web application also provides information such as common skin problems and skincare routines to help users get more familiar with their skin conditions.
+<img src="www/web application.png"></img>
+
+Conclusion
+========================================================
+<li> The Random Forest model obtained a high accuracy in predicting the consumption level of customers. Thus, it can assist in product selection, which means we can use the survey to group the customers and forecast their purchasing capability in the future. However, this app also has some limitations as results generated based on a small-size dataset. Therefore, continuously improvements need to be implemented in the face of challenges and issues.
+## Documentation:
+<div class="content">
+<ul>
+  <li><a href=" https://jingsu.shinyapps.io/Skincare_Survey_Analysis/" target="_blank">Shiny app link</a></li>
+  </li>
+  <li>Shiny App code, Rpres code and dataset all available under our <a href="https://github.com/RongSong1110/WQD7001" target="_blank">Github</a></li>
+</ul>
+</div>
+
+References
+========================================================
+<div class="content">
+<ul>
+<li>https://www.vectorstock.com/royalty-free-vector/woman-facial-skin-problems-vector-23858040
+<li>https://www.irishnews.com/magazine/science/2017/10/13/news/scientists-have-discovered-some-of-the-genes-behind-variation-in-skin-colour-1162194/
+<li>https://www.perfectcorp.com/business/blog/ai-skincare/use-ai-tech-for-skin-analysis-and-ultra-personalization
+<li>https://www.shutterstock.com/image-vector/vector-flat-beauty-routine-constructor-daytime-1802338540
+
